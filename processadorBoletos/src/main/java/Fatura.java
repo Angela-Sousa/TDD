@@ -6,20 +6,21 @@ public class Fatura {
     private String date;
     private String nomeCliente;
     private double somaTotal;
-    private boolean pagamento;
+    private boolean pago;
     private List<Pagamento> pagamentos;
 
     public Fatura(String date, String nomeCliente, double somaTotal) {
         this.date = date;
         this.nomeCliente = nomeCliente;
         this.somaTotal = somaTotal;
+        this.pago = false;
         this.pagamentos = new ArrayList<>();
     }
     public boolean isPago() {
-        return pagamento;
+        return pago;
     }
     public void marcarComoPago() {
-        this.pagamento = true;
+        this.pago = true;
     }
 
     public double getTotal() {

@@ -80,9 +80,10 @@ public class ProcessaBoletoTest {
                 new Boleto("003", "2023-08-12", 300.00)
         );
 
-        processar.processarBoleto(fatura, boletos);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+            processar.processarBoleto(fatura, boletos);
+        });
 
-        assertFalse(fatura.isPago());
-        assertEquals(3, fatura.getPagamentos().size());
+        assertEquals("O valor da fatura deve ser positivo", exception.getMessage());
     }
 }
