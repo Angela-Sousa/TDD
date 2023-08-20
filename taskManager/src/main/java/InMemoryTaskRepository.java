@@ -24,4 +24,9 @@ public class InMemoryTaskRepository implements TaskRepository {
     public void delete(long taskId) {
         tasks.removeIf(task -> task.getId() == taskId);
     }
+
+    @Override
+    public List<Task> findAll() {
+        return new ArrayList<>(tasks);
+    }
 }

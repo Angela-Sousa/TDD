@@ -1,4 +1,6 @@
 import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.List;
 
 public class TaskManager {
     private final TaskRepository taskRepository;
@@ -45,5 +47,14 @@ public class TaskManager {
         if (task != null) {
             taskRepository.delete(taskId);
         }
+    }
+
+    public List<Task> listTasks() {
+        List<Task> tasks = taskRepository.findAll();
+
+        // Sort tasks by due date and priority
+        tasks.sort(Comparator.comparing(Task::getDueDate).thenComparing(Task::getPriority));
+
+        return tasks;
     }
 }
