@@ -39,4 +39,11 @@ public class TaskManager {
 
         return taskRepository.save(existingTask);
     }
+
+    public void deleteTask(long taskId) {
+        Task task = taskRepository.findById(taskId);
+        if (task != null) {
+            taskRepository.delete(taskId);
+        }
+    }
 }

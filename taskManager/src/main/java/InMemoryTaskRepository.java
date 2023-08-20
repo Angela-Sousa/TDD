@@ -19,4 +19,9 @@ public class InMemoryTaskRepository implements TaskRepository {
                 .findFirst()
                 .orElse(null);
     }
+
+    @Override
+    public void delete(long taskId) {
+        tasks.removeIf(task -> task.getId() == taskId);
+    }
 }
