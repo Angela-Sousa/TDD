@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -96,5 +97,23 @@ public class TaskManagerTest {
         // Verify that the task was deleted
         Task retrievedTask = taskRepository.findById(task.getId());
         assertNull(retrievedTask);
+    }
+
+    @Test
+    public void testListTasks() {
+        // Create tasks with different priorities
+        Task highPriorityTask = taskManager.createTask("High Priority Task", "High Priority Description",
+                LocalDate.now(), Priority.HIGH);
+        Task mediumPriorityTask = taskManager.createTask("Medium Priority Task", "Medium Priority Description",
+                LocalDate.now().plusDays(1), Priority.MEDIUM);
+        Task lowPriorityTask = taskManager.createTask("Low Priority Task", "Low Priority Description",
+                LocalDate.now().plusDays(2), Priority.LOW);
+
+        List<Task> tasks = taskManager.listTasks();
+
+        // Verify that tasks are sorted by due date and priority
+        assertEquals(highPriorityTask, tasks.get(0));
+        assertEquals(mediumPriorityTask, tasks.get(1));
+        assertEquals(lowPriorityTask, tasks.get(2));
     }
 }
