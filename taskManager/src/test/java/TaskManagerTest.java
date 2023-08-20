@@ -87,4 +87,14 @@ public class TaskManagerTest {
         assertEquals(LocalDate.now().plusDays(5), updatedTask.getDueDate());
         assertEquals(Priority.HIGH, updatedTask.getPriority());
     }
+
+    @Test
+    public void testDeleteTask() {
+        Task task = taskManager.createTask("Task 3", "Description 3", LocalDate.now(), Priority.MEDIUM);
+        taskManager.deleteTask(task.getId());
+
+        // Verify that the task was deleted
+        Task retrievedTask = taskRepository.findById(task.getId());
+        assertNull(retrievedTask);
+    }
 }
