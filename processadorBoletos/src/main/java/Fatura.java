@@ -1,16 +1,17 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class Fatura {
-    private String date;
+    private LocalDate data;
     private String nomeCliente;
     private double somaTotal;
     private boolean pago;
     private List<Pagamento> pagamentos;
 
-    public Fatura(String date, String nomeCliente, double somaTotal) {
-        this.date = date;
+    public Fatura(LocalDate data, String nomeCliente, double somaTotal) {
+        this.data = data;
         this.nomeCliente = nomeCliente;
         this.somaTotal = somaTotal;
         this.pago = false;

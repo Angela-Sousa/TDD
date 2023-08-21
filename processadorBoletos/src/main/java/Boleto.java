@@ -1,12 +1,14 @@
+import java.time.LocalDate;
+
 public class Boleto {
-    private String code;
-    private String date;
+    private String codigo;
+    private LocalDate data;
     private double valorPago;
     private static final String TIPO_BOLETO = "BOLETO";
 
-    public Boleto(String code, String date, double valorPago) {
-        this.code = code;
-        this.date = date;
+    public Boleto(String code, LocalDate data, double valorPago) {
+        this.codigo = code;
+        this.data = data;
         this.valorPago = valorPago;
     }
 
@@ -15,11 +17,11 @@ public class Boleto {
     }
 
     public String getCode() {
-        return code;
+        return codigo;
     }
 
-    public String getDate() {
-        return date;
+    public LocalDate getDate() {
+        return data;
     }
 
     public String getTipo() {
