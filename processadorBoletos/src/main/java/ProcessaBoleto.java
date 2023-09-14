@@ -13,6 +13,9 @@ public class ProcessaBoleto {
         }
 
         for (Boleto boleto : boletos) {
+            if (boleto.getValorPago() < 0) {
+                throw new IllegalArgumentException("O valor do boleto deve ser positivo");
+            }
             Pagamento pagamento = new Pagamento(boleto.getTipo(), boleto.getValorPago(), boleto.getDate());
             fatura.addPagamento(pagamento);
         }
