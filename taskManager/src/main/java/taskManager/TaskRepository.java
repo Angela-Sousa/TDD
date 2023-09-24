@@ -1,3 +1,5 @@
+package taskManager;
+
 import java.util.List;
 
 public interface TaskRepository {

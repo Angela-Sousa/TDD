@@ -1,3 +1,7 @@
+package taskManager;
+
+import taskManager.Priority;
+
 import java.time.LocalDate;
 
 public class Task {
