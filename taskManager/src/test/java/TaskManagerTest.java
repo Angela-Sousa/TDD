@@ -38,7 +38,7 @@ public class TaskManagerTest {
     public void testUpdateTask() {
         Task task = taskManager.createTask("Task 2", "Description 2", LocalDate.now(), Priority.MEDIUM);
 
-        TaskDTO taskDTO = new TaskDTO(task.getId());
+        TaskDTO taskDTO = new TaskDTO(task);
         taskDTO.setTitle("Updated Title");
 
         Task updatedTask = taskManager.updateTask(taskDTO);
@@ -49,7 +49,7 @@ public class TaskManagerTest {
         assertEquals(LocalDate.now(), updatedTask.getDueDate());
         assertEquals(Priority.MEDIUM, updatedTask.getPriority());
 
-        taskDTO = new TaskDTO(task.getId());
+        taskDTO = new TaskDTO(task);
         taskDTO.setDescription("Updated Description");
         updatedTask = taskManager.updateTask(taskDTO);
 
@@ -59,7 +59,7 @@ public class TaskManagerTest {
         assertEquals(LocalDate.now(), updatedTask.getDueDate());
         assertEquals(Priority.MEDIUM, updatedTask.getPriority());
 
-        taskDTO = new TaskDTO(task.getId());
+        taskDTO = new TaskDTO(task);
         taskDTO.setDueDate(LocalDate.now().plusDays(1));
         updatedTask = taskManager.updateTask(taskDTO);
 
@@ -69,7 +69,7 @@ public class TaskManagerTest {
         assertEquals(LocalDate.now().plusDays(1), updatedTask.getDueDate());
         assertEquals(Priority.MEDIUM, updatedTask.getPriority());
 
-        taskDTO = new TaskDTO(task.getId());
+        taskDTO = new TaskDTO(task);
         taskDTO.setPriority(Priority.LOW);
         updatedTask = taskManager.updateTask(taskDTO);
 
