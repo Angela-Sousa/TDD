@@ -16,6 +16,14 @@ public class TaskDTO {
         this.id = id;
     }
 
+    public TaskDTO(Task task) {
+        this.id = task.getId();
+        this.title = task.getTitle();
+        this.description = task.getDescription();
+        this.dueDate = task.getDueDate();
+        this.priority = task.getPriority();
+    }
+
     public TaskDTO(long id, String title, String description, LocalDate dueDate, Priority priority) {
         this.id = id;
         this.title = title;

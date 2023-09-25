@@ -32,7 +32,7 @@ public class EquivalencePartitioningTests {
     public void testUpdateTask() {
         Task task = taskManager.createTask("Task", "Description", LocalDate.now(), Priority.LOW);
 
-        TaskDTO taskDTO = new TaskDTO(task.getId());
+        TaskDTO taskDTO = new TaskDTO(task);
 
         taskDTO.setPriority(null);
         assertThrows(IllegalArgumentException.class, () -> taskManager.updateTask(taskDTO));

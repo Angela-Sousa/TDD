@@ -34,7 +34,7 @@ public class DecisionTableTests {
     public void testUpdateTask() {
         Task task = taskManager.createTask("Task", "Description", LocalDate.now(), Priority.HIGH);
 
-        TaskDTO taskDTO = new TaskDTO(task.getId());
+        TaskDTO taskDTO = new TaskDTO(task);
 
         taskDTO.setTitle("");
         TaskDTO finalTaskDTO = taskDTO;

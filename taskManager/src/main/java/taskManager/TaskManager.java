@@ -12,6 +12,10 @@ public class TaskManager {
     }
 
     public Task createTask(String title, String description, LocalDate dueDate, Priority priority) {
+        if ((title.isBlank()) || (description.isBlank()) || (dueDate == null) || (priority == null)) {
+            throw new IllegalArgumentException();
+        }
+
         Task task = new Task(title, description, dueDate, priority);
         return taskRepository.save(task);
     }
@@ -28,17 +32,32 @@ public class TaskManager {
         Priority priority = taskDTO.getPriority();
 
         // Update task details
-        if (title != null) {
+        if ((title != null) && (!title.isBlank())) {
             existingTask.setTitle(title);
         }
-        if (description != null) {
+        else {
+            throw new IllegalArgumentException();
+        }
+
+        if (description != null && (!description.isBlank())) {
             existingTask.setDescription(description);
         }
+        else {
+            throw new IllegalArgumentException();
+        }
+
         if (dueDate != null) {
             existingTask.setDueDate(dueDate);
         }
+        else {
+            throw new IllegalArgumentException();
+        }
+
         if (priority != null) {
             existingTask.setPriority(priority);
+        }
+        else {
+            throw new IllegalArgumentException();
         }
 
         return taskRepository.save(existingTask);

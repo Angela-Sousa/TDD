@@ -28,9 +28,10 @@ public class BoundaryValueAnalysisTests {
 
     @Test
     public void testUpdateTask() {
-        Task task = taskManager.createTask("Task", "Description", LocalDate.now(), null);
+        Task task = taskManager.createTask("Task", "Description", LocalDate.now(), Priority.LOW);
+        System.out.println(task);
 
-        TaskDTO taskDTO = new TaskDTO(task.getId());
+        TaskDTO taskDTO = new TaskDTO(task);
         taskDTO.setPriority(Priority.LOW);
         Task updatedTask = taskManager.updateTask(taskDTO);
         assertEquals(Priority.LOW, updatedTask.getPriority());
