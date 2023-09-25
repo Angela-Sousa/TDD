@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import taskManager.*;
 
@@ -19,6 +20,7 @@ public class TaskManagerTest {
     }
 
     @Test
+    @DisplayName("Test for creating tasks")
     public void testCreateTask() {
 
         Task task = taskManager.createTask("Task 1", "Description 1", LocalDate.now(), Priority.HIGH);
@@ -35,6 +37,7 @@ public class TaskManagerTest {
     }
 
     @Test
+    @DisplayName("Test for updating tasks")
     public void testUpdateTask() {
         Task task = taskManager.createTask("Task 2", "Description 2", LocalDate.now(), Priority.MEDIUM);
 
@@ -90,6 +93,7 @@ public class TaskManagerTest {
     }
 
     @Test
+    @DisplayName("Test for deleting tasks")
     public void testDeleteTask() {
         Task task = taskManager.createTask("Task 3", "Description 3", LocalDate.now(), Priority.MEDIUM);
         taskManager.deleteTask(task.getId());
@@ -100,6 +104,7 @@ public class TaskManagerTest {
     }
 
     @Test
+    @DisplayName("Test for listing tasks")
     public void testListTasks() {
         // Create tasks with different priorities
         Task highPriorityTask = taskManager.createTask("High Priority Task", "High Priority Description",

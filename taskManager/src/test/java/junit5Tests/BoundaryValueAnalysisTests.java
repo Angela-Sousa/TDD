@@ -1,0 +1,50 @@
+package junit5Tests;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import taskManager.*;
+
+import java.time.LocalDate;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class BoundaryValueAnalysisTests {
+
+    private TaskRepository taskRepository;
+    private TaskManager taskManager;
+
+    @BeforeEach
+    public void setUp() {
+        taskRepository = new InMemoryTaskRepository();
+        taskManager = new TaskManager(taskRepository);
+    }
+
+    @Test
+    @DisplayName("Test for creating tasks based on boundary value analysis")
+    public void testCreateTask() {
+        Task task1 = taskManager.createTask("Task", "Description", LocalDate.now(), Priority.LOW);
+        Task task2 = taskManager.createTask("Task", "Description", LocalDate.now(), Priority.MEDIUM);
+        Task task3 = taskManager.createTask("Task", "Description", LocalDate.now(), Priority.HIGH);
+    }
+
+    @Test
+    @DisplayName("Test for updating tasks based on boundary value analysis")
+    public void testUpdateTask() {
+        Task task = taskManager.createTask("Task", "Description", LocalDate.now(), Priority.LOW);
+        System.out.println(task);
+
+        TaskDTO taskDTO = new TaskDTO(task);
+        taskDTO.setPriority(Priority.LOW);
+        Task updatedTask = taskManager.updateTask(taskDTO);
+        assertEquals(Priority.LOW, updatedTask.getPriority());
+
+        taskDTO.setPriority(Priority.MEDIUM);
+        updatedTask = taskManager.updateTask(taskDTO);
+        assertEquals(Priority.MEDIUM, updatedTask.getPriority());
+
+        taskDTO.setPriority(Priority.HIGH);
+        updatedTask = taskManager.updateTask(taskDTO);
+        assertEquals(Priority.HIGH, updatedTask.getPriority());
+    }
+}

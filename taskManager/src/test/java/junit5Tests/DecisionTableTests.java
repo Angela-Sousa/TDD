@@ -1,4 +1,4 @@
-package functionalTests;
+package junit5Tests;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,6 +20,7 @@ public class DecisionTableTests {
     }
 
     @Test
+    @DisplayName("Test for creating tasks based on decision table")
     public void testCreateTask() {
         Task task1 = taskManager.createTask("Task", "Description", LocalDate.now(), Priority.HIGH);
 
@@ -31,6 +32,7 @@ public class DecisionTableTests {
     }
 
     @Test
+    @DisplayName("Test for updating tasks based on decision table")
     public void testUpdateTask() {
         Task task = taskManager.createTask("Task", "Description", LocalDate.now(), Priority.HIGH);
 
